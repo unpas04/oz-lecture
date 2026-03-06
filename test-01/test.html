@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>마중(MAJOONG) | 결혼식 축의대 대행</title>
+  <meta name="description" content="결혼식 첫인상부터 축의금 정산까지 맡기는 전문 축의대 서비스, 마중(MAJOONG)" />
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --ink: #121212;
+      --muted: rgba(18,18,18,.65);
+      --muted2: rgba(18,18,18,.45);
+      --card: rgba(255,255,255,.75);
+      --line: rgba(18,18,18,.10);
+      --accent: #d8c6a4;       /* champagne */
+      --accent2: #f4efe7;      /* warm beige */
+      --shadow: 0 18px 45px rgba(0,0,0,.10);
+      --shadow2: 0 10px 28px rgba(0,0,0,.12);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --blur: 10px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo",
+                   "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 700px at 15% -10%, var(--accent2), transparent 55%),
+        radial-gradient(1100px 800px at 90% 10%, rgba(216,198,164,.35), transparent 55%),
+        linear-gradient(#fff, #fff);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+    .section{ padding: 88px 0; position:relative; }
+    .section.tight{ padding: 64px 0; }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px; border:1px solid var(--line);
+      border-radius: 999px; background: rgba(255,255,255,.7);
+      backdrop-filter: blur(var(--blur));
+      font-size: 13px; color: var(--muted);
+    }
+    .kdot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(216,198,164,.25);
+    }
+
+    h1, h2, h3{ margin: 0 0 12px; letter-spacing: -0.02em; }
+    h1{ font-size: clamp(30px, 3.4vw, 52px); line-height:1.05; }
+    h2{ font-size: clamp(24px, 2.2vw, 34px); line-height:1.15; }
+    h3{ font-size: 18px; }
+    p{ margin: 0; color: var(--muted); line-height:1.7; }
+
+    /* NAV */
+    .nav{
+      position: sticky; top:0; z-index: 50;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(18,18,18,.08);
+    }
+    .nav-inner{
+      height: 70px; display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .brand .mark{
+      width:36px; height:36px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent2), rgba(216,198,164,.45));
+      border: 1px solid rgba(18,18,18,.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    .brand small{ display:block; font-weight:700; color: var(--muted2); margin-top:2px; }
+    .menu{
+      display:flex; align-items:center; gap: 6px;
+      padding: 6px;
+      border:1px solid rgba(18,18,18,.08);
+      background: rgba(255,255,255,.55);
+      border-radius: 999px;
+    }
+    .menu a{
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: background .25s var(--ease), color .25s var(--ease);
+      white-space:nowrap;
+    }
+    .menu a:hover{
+      background: rgba(216,198,164,.25);
+      color: var(--ink);
+    }
+    .nav-cta{
+      display:flex; align-items:center; gap:10px;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(18,18,18,.10);
+      background: rgba(255,255,255,.7);
+      color: var(--ink);
+      font-weight: 700;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+      cursor:pointer;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(0,0,0,.12);
+      background: rgba(255,255,255,.9);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(216,198,164,.55), rgba(244,239,231,.95));
+      border: 1px solid rgba(216,198,164,.6);
+    }
+    .btn.primary:hover{
+      box-shadow: 0 20px 45px rgba(216,198,164,.20), 0 18px 40px rgba(0,0,0,.10);
+    }
+
+    /* Layout utilities */
+    .grid-2{ display:grid; grid-template-columns: 1.1fr .9fr; gap: 34px; align-items:center; }
+    .grid-3{ display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .grid-4{ display:grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+
+    /* Cards / hover system */
+    .card{
+      position:relative;
+      border: 1px solid rgba(18,18,18,.10);
+      background: rgba(255,255,255,.70);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.06);
+      backdrop-filter: blur(var(--blur));
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
+      overflow:hidden;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(216,198,164,.55);
+      background: rgba(255,255,255,.82);
+    }
+    /* glow highlight following cursor */
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(500px circle at var(--x, 50%) var(--y, 50%),
+        rgba(216,198,164,.28), transparent 45%);
+      opacity:0;
+      transition: opacity .25s var(--ease);
+      pointer-events:none;
+    }
+    .card:hover::before{ opacity:1; }
+
+    /* Image hover blur */
+    .media{
+      position:relative;
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(18,18,18,.10);
+      background: linear-gradient(135deg, rgba(244,239,231,.95), rgba(216,198,164,.25));
+      box-shadow: 0 14px 38px rgba(0,0,0,.10);
+      min-height: 360px;
+    }
+    .media img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      transform: scale(1.02);
+      transition: transform .35s var(--ease), filter .35s var(--ease), opacity .35s var(--ease);
+      filter: saturate(1.05) contrast(1.02);
+      opacity:.98;
+    }
+    .media:hover img{
+      transform: scale(1.06);
+      filter: blur(1.5px) saturate(1.06);
+      opacity:.96;
+    }
+    .media .label{
+      position:absolute; left:16px; bottom:16px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(18,18,18,.10);
+      backdrop-filter: blur(10px);
+      font-size: 13px; color: var(--muted);
+    }
+
+    /* Hero */
+    .hero{ padding: 70px 0 42px; }
+    .hero .bullets{
+      display:flex; flex-wrap:wrap; gap:10px; margin: 16px 0 22px;
+      color: var(--muted);
+      font-weight: 650;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(18,18,18,.10);
+      background: rgba(255,255,255,.65);
+      backdrop-filter: blur(10px);
+      font-size: 13px;
+    }
+    .pill .check{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(216,198,164,.40);
+      display:grid; place-items:center;
+      font-size: 12px; color: var(--ink);
+      border: 1px solid rgba(216,198,164,.55);
+    }
+    .hero-cta{ display:flex; gap: 10px; flex-wrap:wrap; }
+
+    /* Problem cards */
+    .problem .card{ padding: 18px 18px 16px; }
+    .problem .title{ display:flex; align-items:center; gap:10px; margin-bottom: 8px; font-weight: 800; }
+    .icon{
+      width:34px; height:34px; border-radius: 12px;
+      background: rgba(216,198,164,.28);
+      border: 1px solid rgba(216,198,164,.55);
+      display:grid; place-items:center;
+      font-weight: 900;
+    }
+
+    /* Process */
+    .steps{ display:grid; grid-template-columns: repeat(5,1fr); gap:12px; }
+    .step{
+      padding: 14px; border-radius: 16px;
+      border: 1px solid rgba(18,18,18,.10);
+      background: rgba(255,255,255,.62);
+      text-align:center;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+      position:relative; overflow:hidden;
+    }
+    .step:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.10);
+      border-color: rgba(216,198,164,.55);
+    }
+    .step .n{
+      width:32px; height:32px; border-radius: 12px;
+      margin: 0 auto 10px;
+      background: rgba(244,239,231,.9);
+      border:1px solid rgba(216,198,164,.6);
+      display:grid; place-items:center;
+      font-weight: 900;
+    }
+    .step p{ font-size: 13px; color: var(--muted); line-height:1.45; }
+
+    /* Pricing */
+    .pricing-head{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:18px; flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+    .note{
+      color: var(--muted2);
+      font-size: 13px;
+      border:1px dashed rgba(18,18,18,.14);
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.55);
+    }
+    .plan{
+      padding: 20px;
+      border-radius: 22px;
+    }
+    .plan .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(216,198,164,.25);
+      border: 1px solid rgba(216,198,164,.55);
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .plan .price{
+      font-size: 26px; font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 6px 0 2px;
+    }
+    .plan .meta{ color: var(--muted); font-size: 13px; }
+    .list{
+      margin: 14px 0 18px;
+      display:grid; gap: 10px;
+    }
+    .li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .li .tick{
+      flex:0 0 18px;
+      width:18px; height:18px;
+      border-radius: 6px;
+      background: rgba(216,198,164,.28);
+      border: 1px solid rgba(216,198,164,.55);
+      display:grid; place-items:center;
+      font-size: 12px;
+      margin-top:2px;
+      color: var(--ink);
+    }
+    .plan.standard{
+      border-color: rgba(216,198,164,.75);
+      background: linear-gradient(135deg, rgba(244,239,231,.95), rgba(216,198,164,.22));
+      box-shadow: 0 22px 58px rgba(216,198,164,.22), 0 22px 55px rgba(0,0,0,.10);
+      transform: translateY(-6px);
+    }
+    .plan.standard:hover{
+      transform: translateY(-9px);
+      box-shadow: 0 26px 70px rgba(216,198,164,.25), 0 26px 65px rgba(0,0,0,.12);
+    }
+
+    /* Logos marquee */
+    .marquee{
+      border-top: 1px solid rgba(18,18,18,.08);
+      border-bottom: 1px solid rgba(18,18,18,.08);
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+      padding: 18px 0;
+    }
+    .track{
+      display:flex; gap: 18px;
+      width: max-content;
+      animation: scroll 28s linear infinite;
+      opacity: .55;
+      filter: grayscale(1);
+    }
+    .logo{
+      padding: 10px 14px;
+      border: 1px solid rgba(18,18,18,.10);
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      font-weight: 800;
+      color: rgba(18,18,18,.75);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    @keyframes scroll{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(-50%); }
+    }
+
+    /* FAQ */
+    details{
+      border: 1px solid rgba(18,18,18,.10);
+      background: rgba(255,255,255,.65);
+      border-radius: 16px;
+      padding: 14px 16px;
+      transition: box-shadow .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+    details:hover{
+      border-color: rgba(216,198,164,.55);
+      box-shadow: 0 16px 40px rgba(0,0,0,.10);
+      transform: translateY(-2px);
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .chev{
+      width:28px; height:28px; border-radius: 10px;
+      display:grid; place-items:center;
+      border: 1px solid rgba(18,18,18,.10);
+      background: rgba(255,255,255,.6);
+      transition: transform .25s var(--ease);
+      color: var(--muted);
+      flex:0 0 auto;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+    details p{ margin-top: 10px; color: var(--muted); }
+
+    /* Contact form */
+    form{
+      display:grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .field{ display:grid; gap: 8px; }
+    label{ font-size: 13px; color: var(--muted); font-weight: 700; }
+    input, textarea, select{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(18,18,18,.12);
+      background: rgba(255,255,255,.7);
+      outline:none;
+      font-size: 14px;
+      transition: border-color .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(216,198,164,.85);
+      box-shadow: 0 0 0 6px rgba(216,198,164,.18);
+      background: rgba(255,255,255,.92);
+    }
+    textarea{ min-height: 120px; resize: vertical; grid-column: 1 / -1; }
+    .form-actions{ grid-column: 1 / -1; display:flex; gap: 10px; flex-wrap:wrap; }
+
+    /* Footer */
+    footer{
+      padding: 36px 0 44px;
+      border-top: 1px solid rgba(18,18,18,.08);
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(12px);
+    }
+    .foot{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:start;
+    }
+    .foot small, .foot li{
+      color: var(--muted2);
+      line-height:1.6;
+      font-size: 13px;
+    }
+    .foot ul{ margin:0; padding-left: 18px; }
+
+    /* Mobile */
+    .burger{ display:none; }
+    @media (max-width: 980px){
+      .grid-2{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-4{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: 1fr; }
+      .media{ min-height: 280px; }
+      form{ grid-template-columns: 1fr; }
+      .plan.standard{ transform:none; }
+      .plan.standard:hover{ transform: translateY(-3px); }
+      .menu{ display:none; }
+      .burger{
+        display:inline-flex;
+        padding: 10px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(18,18,18,.10);
+        background: rgba(255,255,255,.7);
+        font-weight: 800;
+      }
+      .mobile-menu{
+        display:none;
+        padding: 10px;
+        border-top: 1px solid rgba(18,18,18,.08);
+      }
+      .mobile-menu.open{ display:block; }
+      .mobile-menu a{
+        display:block;
+        padding: 12px 10px;
+        border-radius: 12px;
+        color: var(--muted);
+      }
+      .mobile-menu a:hover{ background: rgba(216,198,164,.20); color: var(--ink); }
+      .foot{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="마중 홈">
+          <span class="mark" aria-hidden="true"></span>
+          <div>
+            <div>마중 <span style="font-weight:900; color:rgba(18,18,18,.55)">MAJOONG</span></div>
+            <small>결혼식 첫인상 & 축의금 정산</small>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="상단 메뉴">
+          <a href="#about">마중 소개</a>
+          <a href="#service">축의대 대행</a>
+          <a href="#trust">신뢰 시스템</a>
+          <a href="#pricing">할인 이벤트</a>
+          <a href="#contact">견적 문의</a>
+        </nav>
+
+        <div class="nav-cta">
+          <button class="burger" id="burger" aria-label="모바일 메뉴 열기">메뉴</button>
+          <a class="btn primary" href="#contact">견적 문의</a>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu" id="mobileMenu" aria-label="모바일 메뉴">
+        <a href="#about">마중 소개</a>
+        <a href="#service">축의대 대행</a>
+        <a href="#trust">신뢰 시스템</a>
+        <a href="#pricing">할인 이벤트</a>
+        <a href="#contact">견적 문의</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero section">
+      <div class="container grid-2">
+        <div>
+          <span class="kicker"><span class="kdot"></span> 웨딩 축의대 전문 서비스</span>
+          <h1 style="margin-top:14px;">
+            결혼식 첫인상부터<br/>
+            축의금 정산까지 맡기는 전문 축의대
+          </h1>
+          <p style="max-width: 56ch; margin-top: 10px;">
+            교육된 스태프가 하객 응대부터 축의금 관리, 정산 리포트까지 진행합니다.
+            지인은 하객으로 초대하세요.
+          </p>
+
+          <div class="bullets">
+            <span class="pill"><span class="check">✓</span> 실시간 축의금 기록</span>
+            <span class="pill"><span class="check">✓</span> 엑셀 정산 리포트 제공</span>
+            <span class="pill"><span class="check">✓</span> 수거·인계 과정 영상 기록</span>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#contact">견적 문의하기</a>
+            <a class="btn" href="#pricing">가격 패키지 보기</a>
+          </div>
+
+          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+            <div class="card" style="padding:12px 14px; border-radius:16px;">
+              <strong>기록 기반 운영</strong><br/>
+              <span style="color:var(--muted); font-size:13px;">누락/혼선 최소화</span>
+            </div>
+            <div class="card" style="padding:12px 14px; border-radius:16px;">
+              <strong>첫인상 매너</strong><br/>
+              <span style="color:var(--muted); font-size:13px;">단정한 복장·응대</span>
+            </div>
+            <div class="card" style="padding:12px 14px; border-radius:16px;">
+              <strong>정산 스트레스 0</strong><br/>
+              <span style="color:var(--muted); font-size:13px;">리포트로 끝</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="media">
+          <!-- TODO: 여기 Hero 이미지 넣기 (한국인 스태프, 밝은 웨딩홀 로비) -->
+          <img alt="마중 서비스 이미지" src="https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=1400&q=70">
+          <div class="label">Hero 이미지 자리 (교체 추천)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section problem">
+      <div class="container">
+        <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-end;">
+          <div>
+            <span class="kicker"><span class="kdot"></span> 공감으로 시작</span>
+            <h2 style="margin-top:12px;">이런 고민, 한 번쯤 해보셨나요?</h2>
+            <p style="max-width: 70ch;">
+              축의대는 “그냥 알바”가 아니라 결혼식의 첫 인상과 축의금 관리를 동시에 책임지는 중요한 역할입니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top:18px;">
+          <div class="card">
+            <div class="title"><span class="icon">!</span> 친구에게 부탁하기 부담</div>
+            <p>지인은 하객으로 초대하고, 운영은 전문 스태프에게 맡기고 싶어요.</p>
+          </div>
+          <div class="card">
+            <div class="title"><span class="icon">✓</span> 축의금 관리가 걱정</div>
+            <p>누락, 혼선, 전달 과정이 불안해서 체계적인 방식이 필요해요.</p>
+          </div>
+          <div class="card">
+            <div class="title"><span class="icon">⌁</span> 정산이 번거로움</div>
+            <p>예식 후 봉투 확인·엑셀 정리까지 하려니 너무 힘들어요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container grid-2">
+        <div class="media" style="min-height: 320px;">
+          <!-- TODO: 한국인 스태프가 하객 안내하는 장면 -->
+          <img alt="마중 소개 이미지" src="https://images.unsplash.com/photo-1529634897861-1c7b3b57d4c0?auto=format&fit=crop&w=1400&q=70">
+          <div class="label">마중 소개 이미지 자리</div>
+        </div>
+        <div>
+          <span class="kicker"><span class="kdot"></span> 마중 소개</span>
+          <h2 style="margin-top:12px;">결혼식의 첫 인상을 맡깁니다</h2>
+          <p style="margin-top: 8px;">
+            결혼식에서 하객을 맞이하고 축의금을 접수하는 역할은 생각보다 중요합니다.
+            하지만 대부분은 지인에게 부탁하거나 급하게 인력을 구하면서,
+            응대의 어색함과 관리의 불안이 생기곤 합니다.
+          </p>
+          <div class="grid-3" style="margin-top: 16px;">
+            <div class="card">
+              <h3>첫인상</h3>
+              <p>단정한 복장과 매너로 하객을 정중히 맞이합니다.</p>
+            </div>
+            <div class="card">
+              <h3>신뢰</h3>
+              <p>기록·영상 기반으로 과정을 남겨 불안을 줄입니다.</p>
+            </div>
+            <div class="card">
+              <h3>정확한 기록</h3>
+              <p>실시간 기록과 정산 리포트로 마무리까지 깔끔하게.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE -->
+    <section id="service" class="section">
+      <div class="container">
+        <span class="kicker"><span class="kdot"></span> 축의대 대행</span>
+        <h2 style="margin-top:12px;">축의금 관리, 이제 체계적으로</h2>
+        <p style="max-width: 80ch;">
+          마중은 현장에서 “하객 응대 + 축의금 접수 + 기록 + 정산”을 한 흐름으로 운영합니다.
+          예식 후에도 엑셀 리포트로 바로 확인할 수 있어 정산 스트레스를 줄입니다.
+        </p>
+
+        <div class="steps" style="margin-top:18px;">
+          <div class="step">
+            <div class="n">1</div>
+            <strong>하객 맞이</strong>
+            <p>정중한 인사와 안내</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <strong>축의금 접수</strong>
+            <p>안정적으로 접수</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <strong>실시간 기록</strong>
+            <p>누락/혼선 방지</p>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <strong>정리·보관</strong>
+            <p>봉투 정리 프로세스</p>
+          </div>
+          <div class="step">
+            <div class="n">5</div>
+            <strong>수거·인계</strong>
+            <p>절차 기반 인계</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 22px;">
+          <div class="card">
+            <h3>현장 운영 범위</h3>
+            <div class="list">
+              <div class="li"><span class="tick">✓</span> 하객 응대 및 안내</div>
+              <div class="li"><span class="tick">✓</span> 축의금 접수 및 봉투 정리</div>
+              <div class="li"><span class="tick">✓</span> 방명록 안내</div>
+              <div class="li"><span class="tick">✓</span> 기본 동선/식장 안내</div>
+            </div>
+            <p>필요 시 규모에 맞춰 스태프 수를 조정해 안정적으로 운영합니다.</p>
+          </div>
+
+          <div class="media" style="min-height: 280px;">
+            <!-- TODO: 태블릿/클립보드로 기록하는 한국인 스태프 장면 -->
+            <img alt="운영 이미지" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=70">
+            <div class="label">서비스 운영 이미지 자리</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section id="trust" class="section">
+      <div class="container grid-2">
+        <div>
+          <span class="kicker"><span class="kdot"></span> 신뢰 시스템</span>
+          <h2 style="margin-top:12px;">축의금은 신뢰가 전부라서, 모든 과정을 기록합니다</h2>
+          <p style="margin-top: 8px;">
+            “잘 해드립니다”만으로는 부족합니다. 마중은 과정이 남는 방식으로 운영해
+            누락/혼선을 예방하고, 예식 후 확인 가능한 결과물(리포트/영상)을 제공합니다.
+          </p>
+
+          <div class="grid-3" style="margin-top: 16px;">
+            <div class="card">
+              <h3>실시간 기록</h3>
+              <p>접수 즉시 기록하여 누락을 줄입니다.</p>
+            </div>
+            <div class="card">
+              <h3>영상 기록</h3>
+              <p>수거·인계 과정 기록으로 투명하게.</p>
+            </div>
+            <div class="card">
+              <h3>엑셀 리포트</h3>
+              <p>이름/금액/총액까지 한 번에 정리.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="media" style="min-height: 360px;">
+          <!-- TODO: 수거/인계 과정을 기록하는 장면(현금 노출 없이) -->
+          <img alt="신뢰 시스템 이미지" src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=70">
+          <div class="label">영상 기록/인계 이미지 자리</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORT -->
+    <section class="section">
+      <div class="container grid-2">
+        <div class="media" style="min-height: 320px;">
+          <!-- TODO: 엑셀 리포트 목업 이미지(가짜 데이터) -->
+          <img alt="엑셀 정산 리포트 이미지" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=70">
+          <div class="label">엑셀 리포트/대시보드 이미지 자리</div>
+        </div>
+        <div>
+          <span class="kicker"><span class="kdot"></span> 엑셀 정산 리포트</span>
+          <h2 style="margin-top:12px;">결혼식이 끝나면 정산도 끝납니다</h2>
+          <p style="margin-top: 8px;">
+            결혼식 후 가장 번거로운 작업이 ‘누가 얼마 했는지’ 확인하는 정산입니다.
+            마중은 예식 종료 후 정리된 형태의 리포트를 제공해, 정산 시간을 크게 줄입니다.
+          </p>
+          <div class="card" style="margin-top: 14px;">
+            <h3>리포트 포함 항목</h3>
+            <div class="list">
+              <div class="li"><span class="tick">✓</span> 하객 이름 / 축의금 금액</div>
+              <div class="li"><span class="tick">✓</span> 총액 요약</div>
+              <div class="li"><span class="tick">✓</span> 확인 메모(옵션)</div>
+            </div>
+            <p style="color:var(--muted2); font-size:13px;">※ 실제 리포트는 개인정보 보호 기준에 맞춰 전달합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="pricing-head">
+          <div>
+            <span class="kicker"><span class="kdot"></span> 할인 이벤트</span>
+            <h2 style="margin-top:12px;">하객 수 기준 패키지</h2>
+            <p style="max-width: 82ch;">
+              예식 3시간 기준. 규모에 맞게 스태프를 배치하고, 리포트/영상 기반으로 결과까지 깔끔하게 제공합니다.
+            </p>
+          </div>
+          <div class="note">
+            <strong>수도권(서울/경기) 기준 가격</strong><br/>
+            지방은 이동/운영 조건에 따라 <strong>추가 비용</strong>이 발생할 수 있어요. (별도 문의)
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <!-- BASIC -->
+          <div class="card plan">
+            <div class="badge">BASIC</div>
+            <div class="price">30만원</div>
+            <div class="meta">50–100명 · 스태프 2명 · 3시간</div>
+
+            <div class="list">
+              <div class="li"><span class="tick">✓</span> 하객 응대 및 안내</div>
+              <div class="li"><span class="tick">✓</span> 축의금 접수 및 관리</div>
+              <div class="li"><span class="tick">✓</span> 방명록 안내</div>
+              <div class="li"><span class="tick">✓</span> 실시간 축의금 기록</div>
+              <div class="li"><span class="tick">✓</span> 엑셀 정산 리포트 제공</div>
+            </div>
+
+            <a class="btn" href="#contact" style="width:100%;">베이직 견적 받기</a>
+          </div>
+
+          <!-- STANDARD (center highlight on desktop happens via CSS but order kept; you can reorder if you want) -->
+          <div class="card plan standard">
+            <div class="badge">⭐ STANDARD · 추천</div>
+            <div class="price">39만원</div>
+            <div class="meta">100–200명 · 스태프 2명 · 3시간</div>
+
+            <div class="list">
+              <div class="li"><span class="tick">✓</span> 하객 응대 및 안내</div>
+              <div class="li"><span class="tick">✓</span> 축의금 접수 및 관리</div>
+              <div class="li"><span class="tick">✓</span> 방명록 안내</div>
+              <div class="li"><span class="tick">✓</span> 실시간 축의금 기록</div>
+              <div class="li"><span class="tick">✓</span> 엑셀 정산 리포트 제공</div>
+              <div class="li"><span class="tick">✓</span> 축의금 수거 과정 영상 기록</div>
+              <div class="li"><span class="tick">✓</span> 수거/인계 영상 파일 전달</div>
+            </div>
+
+            <a class="btn primary" href="#contact" style="width:100%;">스탠다드 견적 받기</a>
+          </div>
+
+          <!-- PLUS -->
+          <div class="card plan">
+            <div class="badge">PLUS</div>
+            <div class="price">49만원</div>
+            <div class="meta">200–300명 · 스태프 3명 · 3시간</div>
+
+            <div class="list">
+              <div class="li"><span class="tick">✓</span> 하객 응대 및 안내</div>
+              <div class="li"><span class="tick">✓</span> 축의금 접수 및 관리</div>
+              <div class="li"><span class="tick">✓</span> 방명록 안내</div>
+              <div class="li"><span class="tick">✓</span> 실시간 축의금 기록</div>
+              <div class="li"><span class="tick">✓</span> 엑셀 정산 리포트 제공</div>
+              <div class="li"><span class="tick">✓</span> 축의금 수거 과정 영상 기록</div>
+              <div class="li"><span class="tick">✓</span> 수거/인계 영상 파일 전달</div>
+              <div class="li"><span class="tick">✓</span> 이중 확인 프로세스</div>
+            </div>
+
+            <a class="btn" href="#contact" style="width:100%;">플러스 견적 받기</a>
+          </div>
+
+          <!-- PREMIUM -->
+          <div class="card plan">
+            <div class="badge">PREMIUM</div>
+            <div class="price">65만원</div>
+            <div class="meta">300–500명 · 스태프 4명 · 3시간</div>
+
+            <div class="list">
+              <div class="li"><span class="tick">✓</span> 하객 응대 및 안내</div>
+              <div class="li"><span class="tick">✓</span> 축의금 접수 및 관리</div>
+              <div class="li"><span class="tick">✓</span> 방명록 안내</div>
+              <div class="li"><span class="tick">✓</span> 실시간 축의금 기록</div>
+              <div class="li"><span class="tick">✓</span> 엑셀 정산 리포트 제공</div>
+              <div class="li"><span class="tick">✓</span> 축의금 수거 과정 영상 기록</div>
+              <div class="li"><span class="tick">✓</span> 수거/인계 영상 파일 전달</div>
+              <div class="li"><span class="tick">✓</span> 이중 확인 프로세스</div>
+              <div class="li"><span class="tick">✓</span> 하객 안내 전담 스태프 추가</div>
+            </div>
+
+            <a class="btn" href="#contact" style="width:100%;">프리미엄 견적 받기</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 18px;">
+          <strong>500명 이상</strong>은 행사 규모/동선에 따라 맞춤 구성됩니다. <a href="#contact" style="text-decoration:underline;">가격 문의</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECOMMEND -->
+    <section class="section tight">
+      <div class="container">
+        <div class="grid-3">
+          <div class="card">
+            <h3>친구는 하객으로</h3>
+            <p>부탁하기 민망한 역할은 전문 스태프에게 맡기세요.</p>
+          </div>
+          <div class="card">
+            <h3>운영 스트레스 감소</h3>
+            <p>현장 운영부터 정산 리포트까지 한 번에 끝납니다.</p>
+          </div>
+          <div class="card">
+            <h3>기록으로 신뢰 확보</h3>
+            <p>영상·리포트 기반으로 과정이 남는 운영을 제공합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGOS MARQUEE -->
+    <section class="section tight">
+      <div class="container" style="margin-bottom: 14px;">
+        <span class="kicker"><span class="kdot"></span> 다양한 예식장에서 마중이 함께합니다</span>
+      </div>
+      <div class="marquee">
+        <div class="track" aria-hidden="true">
+          <span class="logo">Grand Wedding Hall</span>
+          <span class="logo">Lumiere Convention</span>
+          <span class="logo">Aurora Hall</span>
+          <span class="logo">Bella Wedding</span>
+          <span class="logo">River Convention</span>
+          <span class="logo">Noir Hotel</span>
+          <span class="logo">Maison Wedding</span>
+
+          <!-- duplicate for seamless -->
+          <span class="logo">Grand Wedding Hall</span>
+          <span class="logo">Lumiere Convention</span>
+          <span class="logo">Aurora Hall</span>
+          <span class="logo">Bella Wedding</span>
+          <span class="logo">River Convention</span>
+          <span class="logo">Noir Hotel</span>
+          <span class="logo">Maison Wedding</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <span class="kicker"><span class="kdot"></span> FAQ</span>
+        <h2 style="margin-top:12px;">자주 묻는 질문</h2>
+
+        <div class="grid-3" style="margin-top: 16px;">
+          <details class="card">
+            <summary>몇 시간 기준인가요?<span class="chev">⌄</span></summary>
+            <p>기본은 예식 3시간 기준입니다. 상황에 따라 시간 추가가 가능합니다.</p>
+          </details>
+
+          <details class="card">
+            <summary>영상 기록은 어떻게 전달되나요?<span class="chev">⌄</span></summary>
+            <p>수거·인계 과정 기록은 예식 종료 후 안내드린 방식으로 파일 전달됩니다. (현금/개인정보 노출 최소화)</p>
+          </details>
+
+          <details class="card">
+            <summary>엑셀 리포트는 언제 받을 수 있나요?<span class="chev">⌄</span></summary>
+            <p>당일 또는 익일 전달을 기본으로 합니다. (현장 상황에 따라 변동 가능)</p>
+          </details>
+
+          <details class="card">
+            <summary>지방도 가능한가요?<span class="chev">⌄</span></summary>
+            <p>가능합니다. 이동/운영 조건에 따라 추가 비용이 발생할 수 있어 별도 문의 부탁드립니다.</p>
+          </details>
+
+          <details class="card">
+            <summary>결혼식장(웨딩홀)별로 운영이 다른가요?<span class="chev">⌄</span></summary>
+            <p>식장 동선과 규정에 맞춰 운영합니다. 사전 안내로 현장 혼선을 줄입니다.</p>
+          </details>
+
+          <details class="card">
+            <summary>예약은 어떻게 하나요?<span class="chev">⌄</span></summary>
+            <p>아래 견적 문의 폼 또는 카톡 상담으로 날짜/지역/하객 수를 남겨주시면 안내드립니다.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container grid-2">
+        <div>
+          <span class="kicker"><span class="kdot"></span> 견적 문의</span>
+          <h2 style="margin-top:12px;">결혼식 날짜만 남겨주세요</h2>
+          <p style="margin-top: 8px; max-width: 72ch;">
+            날짜·지역·하객 규모만 알려주시면 가장 적합한 패키지로 안내드릴게요.
+            (수도권 기준 / 지방은 별도 문의)
+          </p>
+
+          <div class="card" style="margin-top: 14px;">
+            <h3>상담 시 체크하면 좋은 정보</h3>
+            <div class="list">
+              <div class="li"><span class="tick">✓</span> 예식 시작 시간 / 로비 접수 가능 시간</div>
+              <div class="li"><span class="tick">✓</span> 예상 하객 수</div>
+              <div class="li"><span class="tick">✓</span> 식장 위치(지역)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>빠른 견적 요청</h3>
+          <p style="margin-bottom: 8px;">아래 내용을 입력하면 연락드릴게요.</p>
+
+          <form onsubmit="return handleSubmit(event)">
+            <div class="field">
+              <label for="date">결혼식 날짜</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+
+            <div class="field">
+              <label for="region">지역</label>
+              <select id="region" name="region" required>
+                <option value="">선택</option>
+                <option>서울</option>
+                <option>경기</option>
+                <option>인천</option>
+                <option>지방(별도 문의)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="guests">예상 하객 수</label>
+              <select id="guests" name="guests" required>
+                <option value="">선택</option>
+                <option>50–100명</option>
+                <option>100–200명</option>
+                <option>200–300명</option>
+                <option>300–500명</option>
+                <option>500명 이상</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="phone">연락처</label>
+              <input id="phone" name="phone" type="tel" placeholder="010-1234-5678" required />
+            </div>
+
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="msg">요청사항</label>
+              <textarea id="msg" name="msg" placeholder="예식 시간, 식장명, 요청사항 등을 적어주세요."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <!-- TODO: 카카오톡 채널 링크로 변경 -->
+              <a class="btn" href="#" onclick="alert('카톡 상담 링크를 여기에 연결하세요!')">카톡 상담하기</a>
+              <button class="btn primary" type="submit">견적 요청하기</button>
+            </div>
+
+            <p style="color:var(--muted2); font-size:12px; margin: 6px 0 0;">
+              ※ 제출된 정보는 상담 목적 외 사용되지 않습니다.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="brand" style="margin-bottom:10px;">
+          <span class="mark" aria-hidden="true"></span>
+          <div>
+            <div><strong>마중 MAJOONG</strong></div>
+            <small>결혼식 축의대 대행 서비스</small>
+          </div>
+        </div>
+        <small>
+          결혼식 첫 인상부터 축의금 정산까지, 기록 기반으로 깔끔하게 운영합니다.
+        </small>
+        <div style="margin-top:10px;">
+          <small>© MAJOONG All rights reserved.</small>
+        </div>
+      </div>
+
+      <div>
+        <small><strong>사업자 정보</strong> (여기 채워넣기)</small>
+        <ul>
+          <li>상호: 마중(MAJOONG)</li>
+          <li>대표자: 홍길동</li>
+          <li>사업자등록번호: 000-00-00000</li>
+          <li>주소: 서울특별시 ○○구 ○○로 00</li>
+          <li>고객센터: 010-0000-0000</li>
+          <li>이메일: hello@majoong.co</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (burger) {
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      });
+    }
+
+    // Cursor-follow glow on cards
+    document.querySelectorAll('.card, .step').forEach(el => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width) * 100;
+        const y = ((e.clientY - r.top) / r.height) * 100;
+        el.style.setProperty('--x', x + '%');
+        el.style.setProperty('--y', y + '%');
+      });
+    });
+
+    // Fake submit handler (replace with real API later)
+    function handleSubmit(e){
+      e.preventDefault();
+      alert('견적 요청이 접수되었습니다! (실제 전송은 아직 연결 전)');
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>

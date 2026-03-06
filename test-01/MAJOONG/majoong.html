@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마중 MAJOONG — 축의대 전문 서비스</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C5A46B;
+      --gold-light: #E8D9BC;
+      --gold-pale: #F7F1E8;
+      --gold-dark: #9E7E44;
+      --cream: #FAFAF7;
+      --white: #FFFFFF;
+      --charcoal: #222222;
+      --gray-dark: #555555;
+      --gray: #888888;
+      --gray-light: #E8E8E4;
+      --serif: 'Noto Serif KR', serif;
+      --sans: 'Noto Sans KR', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--charcoal);
+      background: var(--white);
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-light); border-radius: 4px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 68px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(197,164,107,0.18);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.07); }
+    .nav-logo {
+      display: flex; align-items: baseline; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo .ko {
+      font-family: var(--serif);
+      font-size: 20px; font-weight: 600; color: var(--charcoal);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo .en {
+      font-size: 11px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.2em;
+    }
+    .nav-menu { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-menu a {
+      text-decoration: none; color: var(--gray-dark);
+      font-size: 13.5px; font-weight: 400; letter-spacing: 0.02em;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-menu a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1.5px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-menu a:hover { color: var(--charcoal); }
+    .nav-menu a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      background: var(--charcoal); color: #fff;
+      border: none; padding: 10px 22px;
+      font-family: var(--sans); font-size: 13px; font-weight: 500;
+      cursor: pointer; letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav-cta:hover { background: var(--gold); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding-top: 68px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 100vh; align-items: center;
+      background: var(--cream);
+    }
+    .hero-left {
+      padding: 80px 60px 80px 80px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11.5px; font-weight: 600; color: var(--gold);
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 1.5px; background: var(--gold);
+    }
+    .hero-left h1 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 3.2vw, 46px);
+      font-weight: 500; line-height: 1.45;
+      color: var(--charcoal); margin-bottom: 22px;
+    }
+    .hero-left p {
+      font-size: 15px; color: var(--gray-dark);
+      line-height: 1.9; margin-bottom: 36px; max-width: 400px;
+    }
+    .trust-list { list-style: none; margin-bottom: 44px; }
+    .trust-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13.5px; color: var(--gray-dark); margin-bottom: 10px;
+    }
+    .trust-list li::before {
+      content: '✔'; color: var(--gold); font-size: 12px; flex-shrink: 0;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-dark {
+      background: var(--charcoal); color: #fff;
+      padding: 14px 32px; font-size: 14px; font-weight: 500;
+      border: none; cursor: pointer; letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-dark:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(197,164,107,0.3);
+    }
+    .btn-outline-dark {
+      background: transparent; color: var(--charcoal);
+      padding: 14px 32px; font-size: 14px; font-weight: 500;
+      border: 1.5px solid var(--charcoal); cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.2s; text-decoration: none; display: inline-block;
+    }
+    .btn-outline-dark:hover {
+      background: var(--charcoal); color: #fff;
+      transform: translateY(-2px);
+    }
+    .hero-right {
+      position: relative; height: 100%;
+      min-height: 100vh; overflow: hidden;
+    }
+    .hero-img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #e8ddd0 0%, #d4c4a8 40%, #c4a86a 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: rgba(255,255,255,0.5);
+      font-size: 12px; letter-spacing: 0.1em;
+    }
+    .hero-img-placeholder .icon { font-size: 48px; opacity: 0.4; }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 100px 80px; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; color: var(--gold);
+      letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-tag::before { content: ''; width: 24px; height: 1.5px; background: var(--gold); }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.8vw, 36px); font-weight: 500;
+      color: var(--charcoal); line-height: 1.45; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 15px; color: var(--gray-dark); line-height: 1.9;
+      max-width: 560px;
+    }
+    .section-header-center { text-align: center; margin-bottom: 64px; }
+    .section-header-center .section-tag { justify-content: center; }
+    .section-header-center .section-tag::before { display: none; }
+    .section-header-center .section-title::after {
+      content: ''; display: block;
+      width: 36px; height: 2px; background: var(--gold);
+      margin: 18px auto 0;
+    }
+    .section-header-center .section-sub { margin-inline: auto; }
+
+    /* ─── SECTION 2: PROBLEM ─── */
+    #problem {
+      background: var(--white);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      padding: 100px 80px;
+    }
+    .problem-cards { display: flex; flex-direction: column; gap: 14px; margin: 36px 0; }
+    .problem-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 20px 24px;
+      border: 1px solid var(--gray-light);
+      background: var(--cream);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .problem-card:hover {
+      border-color: var(--gold-light);
+      transform: translateX(6px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .problem-card .check { color: var(--gold); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+    .problem-card p { font-size: 14px; color: var(--gray-dark); line-height: 1.7; }
+    .problem-conclusion {
+      padding: 28px 32px;
+      border-left: 3px solid var(--gold);
+      background: var(--gold-pale);
+      font-size: 14px; line-height: 1.9; color: var(--charcoal);
+    }
+    .problem-conclusion strong { font-weight: 600; display: block; margin-bottom: 8px; }
+    .problem-img {
+      width: 100%; height: 460px;
+      background: linear-gradient(135deg, #ede4d8 0%, #d8c8a8 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(0,0,0,0.2); font-size: 12px; letter-spacing: 0.1em;
+      position: relative;
+    }
+    .problem-img::after {
+      content: '';
+      position: absolute; bottom: -16px; right: -16px;
+      width: 85%; height: 85%;
+      border: 1.5px solid var(--gold-light); z-index: -1;
+    }
+
+    /* ─── SECTION 3: 마중 소개 ─── */
+    #intro {
+      background: var(--cream);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      padding: 100px 80px;
+    }
+    .intro-img {
+      width: 100%; height: 480px;
+      background: linear-gradient(160deg, #2a2a2a 0%, #4a4040 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.2); font-size: 12px; letter-spacing: 0.1em;
+      position: relative;
+    }
+    .intro-img::before {
+      content: '';
+      position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px;
+      background: var(--gold-light); z-index: -1;
+    }
+    .intro-text p { font-size: 14.5px; color: var(--gray-dark); line-height: 1.95; margin-bottom: 16px; }
+    .key-points { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; }
+    .key-point {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 20px; background: var(--white);
+      border: 1px solid var(--gray-light);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .key-point:hover { border-color: var(--gold); transform: translateX(4px); }
+    .key-point .dot {
+      width: 8px; height: 8px; background: var(--gold);
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .key-point span { font-size: 14px; font-weight: 500; }
+
+    /* ─── SECTION 4: 철학 ─── */
+    #philosophy { background: var(--charcoal); padding: 100px 80px; }
+    #philosophy .section-tag { color: var(--gold-light); }
+    #philosophy .section-tag::before { background: var(--gold-light); }
+    #philosophy .section-title { color: var(--white); }
+    .pillar-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 56px;
+    }
+    .pillar {
+      padding: 48px 40px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .pillar:hover {
+      background: rgba(197,164,107,0.1);
+      transform: translateY(-4px);
+    }
+    .pillar-icon { font-size: 32px; margin-bottom: 24px; }
+    .pillar h3 {
+      font-family: var(--serif);
+      font-size: 22px; font-weight: 500; color: var(--white);
+      margin-bottom: 16px;
+    }
+    .pillar p { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.9; }
+
+    /* ─── SECTION 5: 서비스 ─── */
+    #service { background: var(--white); }
+    .service-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 56px;
+    }
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
+    .process-step {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--gray-light);
+      transition: padding-left 0.25s;
+    }
+    .process-step:hover { padding-left: 8px; }
+    .process-step:last-child { border-bottom: none; }
+    .step-num-box {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--gold-pale); border: 1.5px solid var(--gold-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--gold-dark);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .process-step:hover .step-num-box { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .step-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .step-content p { font-size: 13px; color: var(--gray); line-height: 1.8; }
+    .service-img {
+      width: 100%; height: 460px;
+      background: linear-gradient(135deg, #e4dcd0 0%, #c8b898 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(0,0,0,0.2); font-size: 12px; letter-spacing: 0.1em;
+    }
+
+    /* ─── SECTION 6: 신뢰 ─── */
+    #trust {
+      background: var(--cream);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      padding: 100px 80px;
+    }
+    .trust-img {
+      width: 100%; height: 460px;
+      background: linear-gradient(160deg, #e8e4dc 0%, #d4c8b0 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(0,0,0,0.2); font-size: 12px; letter-spacing: 0.1em;
+    }
+    .trust-features { display: flex; flex-direction: column; gap: 24px; margin-top: 36px; }
+    .trust-feat {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; background: var(--white);
+      border: 1px solid var(--gray-light);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .trust-feat:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+      border-color: var(--gold-light);
+    }
+    .trust-feat .feat-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .trust-feat h4 { font-size: 14.5px; font-weight: 600; margin-bottom: 6px; }
+    .trust-feat p { font-size: 13px; color: var(--gray-dark); line-height: 1.8; }
+
+    /* ─── SECTION 7: 영상 기록 ─── */
+    #video { background: var(--white); padding: 100px 80px; }
+    .video-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 56px;
+    }
+    .video-content p { font-size: 14.5px; color: var(--gray-dark); line-height: 1.95; margin-bottom: 16px; }
+    .video-highlight {
+      margin-top: 32px; padding: 24px 28px;
+      background: var(--charcoal); color: rgba(255,255,255,0.85);
+      font-size: 14px; line-height: 1.9;
+    }
+    .video-highlight strong { color: var(--gold-light); display: block; margin-bottom: 6px; }
+    .video-img {
+      width: 100%; height: 400px;
+      background: linear-gradient(160deg, #1e1e1e 0%, #3a3020 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.15); font-size: 12px; letter-spacing: 0.1em;
+    }
+
+    /* ─── SECTION 8: 엑셀 리포트 ─── */
+    #report {
+      background: var(--gold-pale); padding: 100px 80px;
+    }
+    .report-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 56px;
+    }
+    .report-img {
+      width: 100%; height: 400px;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      padding: 24px; overflow: hidden;
+    }
+    .report-table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+    }
+    .report-table th {
+      background: var(--charcoal); color: var(--white);
+      padding: 10px 14px; text-align: left; font-weight: 500; font-size: 12px;
+    }
+    .report-table td {
+      padding: 10px 14px; border-bottom: 1px solid var(--gray-light);
+      color: var(--gray-dark);
+    }
+    .report-table tr:nth-child(even) td { background: var(--cream); }
+    .report-total {
+      background: var(--gold-pale) !important; font-weight: 600; color: var(--charcoal) !important;
+    }
+    .report-content p { font-size: 14.5px; color: var(--gray-dark); line-height: 1.95; margin-bottom: 16px; }
+    .report-items { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+    .report-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: var(--charcoal);
+    }
+    .report-item::before {
+      content: ''; width: 6px; height: 6px; background: var(--gold);
+      border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ─── SECTION 9: 가격 ─── */
+    #pricing { background: var(--white); }
+    .pricing-note {
+      text-align: center; font-size: 13.5px; color: var(--gray);
+      margin-bottom: 56px; line-height: 1.8;
+    }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .pricing-card {
+      border: 1px solid var(--gray-light); padding: 36px 28px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative; background: var(--white);
+    }
+    .pricing-card.recommended {
+      border: 2px solid var(--gold);
+      transform: translateY(-8px);
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.1);
+    }
+    .pricing-card.recommended:hover { transform: translateY(-12px); }
+    .rec-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 4px 16px;
+      letter-spacing: 0.08em; white-space: nowrap;
+    }
+    .plan-tier { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 16px; }
+    .plan-price {
+      font-family: var(--serif);
+      font-size: 34px; font-weight: 600; color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .plan-price small { font-size: 15px; font-weight: 400; color: var(--gray); }
+    .plan-desc { font-size: 13px; color: var(--gray-dark); margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--gray-light); }
+    .plan-features { list-style: none; margin-bottom: 32px; }
+    .plan-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--gray-dark); padding: 8px 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .plan-features li::before { content: '—'; color: var(--gold); font-weight: 700; }
+    .plan-cta {
+      width: 100%; padding: 13px;
+      background: transparent; border: 1.5px solid var(--charcoal);
+      color: var(--charcoal); font-family: var(--sans);
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      letter-spacing: 0.04em; transition: all 0.2s;
+    }
+    .plan-cta:hover { background: var(--charcoal); color: #fff; }
+    .pricing-card.recommended .plan-cta { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .pricing-card.recommended .plan-cta:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+
+    /* ─── SECTION 10: 추천 대상 ─── */
+    #recommend { background: var(--cream); }
+    .recommend-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-top: 56px;
+    }
+    .recommend-card {
+      padding: 40px 32px;
+      background: var(--white); border: 1px solid var(--gray-light);
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .recommend-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.09);
+      border-color: var(--gold-light);
+    }
+    .rec-icon { font-size: 36px; margin-bottom: 20px; }
+    .recommend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+    .recommend-card p { font-size: 13.5px; color: var(--gray-dark); line-height: 1.8; }
+
+    /* ─── SECTION 11: 예식장 ─── */
+    #halls { background: var(--white); padding: 80px 0; overflow: hidden; }
+    #halls .inner { padding: 0 80px; }
+    .halls-title { text-align: center; margin-bottom: 48px; }
+    .halls-title .section-title { margin-bottom: 0; }
+    .halls-title .section-title::after {
+      content: ''; display: block; width: 36px; height: 2px;
+      background: var(--gold); margin: 16px auto 0;
+    }
+    .logo-track-wrap { overflow: hidden; position: relative; }
+    .logo-track-wrap::before,
+    .logo-track-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+    }
+    .logo-track-wrap::before { left: 0; background: linear-gradient(to right, var(--white), transparent); }
+    .logo-track-wrap::after { right: 0; background: linear-gradient(to left, var(--white), transparent); }
+    .logo-track {
+      display: flex; gap: 60px; align-items: center;
+      animation: scroll-logos 28s linear infinite;
+      width: max-content;
+    }
+    @keyframes scroll-logos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .logo-item {
+      font-family: var(--serif); font-size: 17px; font-weight: 500;
+      color: var(--charcoal); opacity: 0.22; white-space: nowrap;
+      letter-spacing: 0.04em; transition: opacity 0.3s;
+    }
+    .logo-item:hover { opacity: 0.55; }
+
+    /* ─── SECTION 12: FAQ ─── */
+    #faq { background: var(--cream); }
+    .faq-list { max-width: 720px; margin: 56px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--gray-light); }
+    .faq-btn {
+      width: 100%; text-align: left; background: none; border: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 0; cursor: pointer; gap: 20px;
+      font-family: var(--sans); font-size: 15px; font-weight: 500;
+      color: var(--charcoal); transition: color 0.2s;
+    }
+    .faq-btn:hover { color: var(--gold-dark); }
+    .faq-toggle {
+      width: 30px; height: 30px; flex-shrink: 0;
+      border: 1.5px solid var(--gray-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--gray); font-weight: 300;
+      transition: transform 0.35s, background 0.2s, border-color 0.2s, color 0.2s;
+      line-height: 1;
+    }
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
+      background: var(--gold); border-color: var(--gold); color: #fff;
+    }
+    .faq-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .faq-item.open .faq-body { max-height: 300px; }
+    .faq-body p {
+      padding-bottom: 24px; font-size: 14px;
+      color: var(--gray-dark); line-height: 1.9;
+    }
+
+    /* ─── SECTION 13: 문의 ─── */
+    #contact { background: var(--white); padding: 100px 80px; }
+    .contact-layout {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 80px; align-items: start;
+    }
+    .contact-info h2 {
+      font-family: var(--serif);
+      font-size: 32px; font-weight: 500; margin-bottom: 16px; line-height: 1.4;
+    }
+    .contact-info .gold-line { width: 36px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+    .contact-info > p { font-size: 14.5px; color: var(--gray-dark); line-height: 1.9; margin-bottom: 40px; }
+    .contact-channels { display: flex; flex-direction: column; gap: 14px; }
+    .channel-btn {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 24px;
+      border: 1.5px solid var(--gray-light); background: var(--white);
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s; font-family: var(--sans);
+    }
+    .channel-btn.kakao { border-color: #F9E000; background: #FEE500; }
+    .channel-btn.kakao:hover { background: #F0D800; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .channel-btn.inquiry { border-color: var(--charcoal); background: var(--charcoal); color: #fff; }
+    .channel-btn.inquiry:hover { background: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
+    .channel-btn .ch-icon { font-size: 20px; }
+    .channel-btn .ch-text { font-size: 14px; font-weight: 600; letter-spacing: 0.03em; }
+    .contact-form {
+      background: var(--cream); padding: 44px 40px;
+      border: 1px solid var(--gray-light);
+    }
+    .form-title {
+      font-family: var(--serif); font-size: 18px; font-weight: 500;
+      color: var(--charcoal); margin-bottom: 28px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: var(--gray-dark); margin-bottom: 8px; letter-spacing: 0.06em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--gray-light); background: var(--white);
+      font-family: var(--sans); font-size: 14px; color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(197,164,107,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%; padding: 15px;
+      background: var(--charcoal); color: #fff;
+      border: none; font-family: var(--sans);
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s;
+    }
+    .form-submit:hover { background: var(--gold); transform: translateY(-1px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1C1C1C; color: rgba(255,255,255,0.5);
+      padding: 56px 80px 36px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .logo {
+      font-family: var(--serif);
+      font-size: 19px; font-weight: 600; color: #fff; margin-bottom: 8px;
+    }
+    .footer-brand .logo span { color: var(--gold); margin-left: 8px; font-size: 12px; letter-spacing: 0.15em; font-family: var(--sans); font-weight: 500; }
+    .footer-brand p { font-size: 12.5px; line-height: 1.9; margin-top: 8px; }
+    .footer-meta { margin-top: 20px; font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.3); }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.8);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.45); text-decoration: none;
+      font-size: 13px; transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,0.25);
+    }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .nav-menu { gap: 24px; }
+      section, #problem, #intro, #trust, #contact { padding: 72px 40px; }
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 40px 48px; }
+      .hero-right { min-height: 380px; }
+      #problem, #intro, #trust, #video .video-layout, #report .report-layout, .service-layout, .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+      .pillar-grid { grid-template-columns: 1fr; gap: 2px; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .pricing-card.recommended { transform: none; }
+      .recommend-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-menu { display: none; }
+      section, #problem, #intro, #trust, #contact, #video, #report, #pricing, #faq, #halls .inner { padding: 56px 20px; }
+      .hero-left { padding: 48px 20px 40px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">
+    <span class="ko">마중</span>
+    <span class="en">MAJOONG</span>
+  </a>
+  <ul class="nav-menu">
+    <li><a href="#intro">마중 소개</a></li>
+    <li><a href="#service">축의대 대행</a></li>
+    <li><a href="#trust">신뢰 시스템</a></li>
+    <li><a href="#pricing">할인 이벤트</a></li>
+    <li><a href="#contact">견적 문의</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">견적 문의하기</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow reveal">축의대 전문 서비스</div>
+    <h1 class="reveal">결혼식 첫인상부터<br>축의금 정산까지<br>맡기는 전문 축의대</h1>
+    <p class="reveal">교육된 스태프가 하객 응대부터<br>축의금 관리, 정산 리포트까지 진행합니다.</p>
+    <ul class="trust-list reveal">
+      <li>실시간 축의금 기록</li>
+      <li>엑셀 정산 리포트 제공</li>
+      <li>수거 및 인계 과정 영상 기록</li>
+    </ul>
+    <div class="hero-btns reveal">
+      <a href="#contact" class="btn-dark">견적 문의하기</a>
+      <a href="#pricing" class="btn-outline-dark">가격 패키지 보기</a>
+    </div>
+  </div>
+<div class="hero-right">
+  <img src="https://i.pinimg.com/1200x/97/88/1b/97881b6e8b31d3f5b90e8311b13596cc.jpg" 
+       alt="축의대 전경" 
+       style="width:100%; height:100%; object-fit:cover;">
+</div>
+</section>
+
+<!-- ─── PROBLEM ─── -->
+<section id="problem">
+  <div class="reveal-left">
+    <div class="section-tag">Problem</div>
+    <h2 class="section-title">이런 고민,<br>한 번쯤 해보셨나요?</h2>
+    <div class="problem-cards">
+      <div class="problem-card">
+        <span class="check">✔</span>
+        <p>친구에게 축의대를 부탁하기 부담스럽다</p>
+      </div>
+      <div class="problem-card">
+        <span class="check">✔</span>
+        <p>축의금 관리가 걱정된다</p>
+      </div>
+      <div class="problem-card">
+        <span class="check">✔</span>
+        <p>결혼식 끝나고 정산이 번거롭다</p>
+      </div>
+    </div>
+    <div class="problem-conclusion">
+      <strong>결혼식에서 하객이 가장 먼저 만나는 사람은<br>신랑 신부가 아니라 축의대를 담당하는 사람입니다.</strong>
+      마중은 이러한 고민을 해결하기 위해 만들어진 축의대 전문 서비스입니다.
+    </div>
+  </div>
+  <div class="reveal-right" style="position:relative;">
+    <img src='https://i.pinimg.com/1200x/6e/1a/a5/6e1aa56db915c851e7bc801bca6a4ae4.jpg' alt='하객 응대' style='width:100%;height:460px;object-fit:cover;'>
+  </div>
+</section>
+
+<!-- ─── 소개 ─── -->
+<section id="intro">
+  <div class="reveal-left" style="position:relative;">
+    <img src='https://i.pinimg.com/1200x/7d/32/c1/7d32c1908a89f9077b37e1590a61a219.jpg' alt='스태프 프로필' style='width:100%;height:480px;object-fit:cover;'>
+  </div>
+  <div class="reveal-right">
+    <div class="section-tag">마중 소개</div>
+    <h2 class="section-title">결혼식의 첫 인상을<br>맡깁니다</h2>
+    <p style="font-size:14.5px;color:var(--gray-dark);line-height:1.95;margin-bottom:16px;">
+      결혼식에서 하객을 맞이하고 축의금을 접수하는 역할은 매우 중요합니다.
+    </p>
+    <p style="font-size:14.5px;color:var(--gray-dark);line-height:1.95;margin-bottom:16px;">
+      하지만 대부분의 결혼식에서는 지인에게 부탁하거나 급하게 인력을 구하는 경우가 많습니다. 마중은 이러한 역할을 전문 스태프와 체계적인 시스템으로 운영합니다.
+    </p>
+    <div class="key-points">
+      <div class="key-point"><div class="dot"></div><span>매너 교육을 받은 전문 스태프</span></div>
+      <div class="key-point"><div class="dot"></div><span>체계적인 축의금 관리 프로세스</span></div>
+      <div class="key-point"><div class="dot"></div><span>결혼식 이후 정산 리포트 제공</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 철학 ─── -->
+<section id="philosophy">
+  <div class="section-tag reveal">Philosophy</div>
+  <h2 class="section-title reveal">마중이 중요하게<br>생각하는 것</h2>
+  <div class="pillar-grid">
+    <div class="pillar reveal">
+      <div class="pillar-icon">🤝</div>
+      <h3>첫인상</h3>
+      <p>하객이 결혼식장에서 처음 마주하는 사람이 바로 축의대입니다. 마중의 스태프는 단순한 안내가 아닌, 최고의 첫인상을 선사합니다.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon">🛡️</div>
+      <h3>신뢰</h3>
+      <p>축의금은 신뢰가 전부입니다. 영상 기록, 실시간 기록 시스템, 투명한 인계 프로세스로 모든 과정을 신뢰할 수 있게 운영합니다.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-icon">📊</div>
+      <h3>정확한 기록</h3>
+      <p>결혼식이 끝난 후에도 정산이 깔끔하게 마무리될 수 있도록, 엑셀 정산 리포트로 하객명, 금액, 총합을 정확하게 전달합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 서비스 ─── -->
+<section id="service" style="padding:100px 80px;">
+  <div class="section-header-center reveal">
+    <div class="section-tag">Service</div>
+    <h2 class="section-title">축의금 관리,<br>이제 체계적으로</h2>
+  </div>
+  <div class="service-layout">
+    <div class="process-steps reveal-left">
+      <div class="process-step">
+        <div class="step-num-box">01</div>
+        <div class="step-content">
+          <h4>하객 맞이 및 안내</h4>
+          <p>예식장 입구에서 정중하고 따뜻하게 하객을 맞이합니다. 자리 안내와 기본 응대를 담당합니다.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num-box">02</div>
+        <div class="step-content">
+          <h4>축의금 접수</h4>
+          <p>하객으로부터 축의금 봉투를 접수하고 성함을 확인합니다. 정확하고 신속하게 처리합니다.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num-box">03</div>
+        <div class="step-content">
+          <h4>실시간 기록</h4>
+          <p>접수된 축의금을 즉시 기록합니다. 누락 없이 정확하게 모든 하객의 정보를 관리합니다.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num-box">04</div>
+        <div class="step-content">
+          <h4>봉투 정리 및 보관</h4>
+          <p>접수된 봉투를 안전하게 정리하고 보관합니다. 분실 및 혼동 없이 체계적으로 관리합니다.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num-box">05</div>
+        <div class="step-content">
+          <h4>수거 및 인계</h4>
+          <p>예식 종료 후 영상 기록과 함께 축의금을 안전하게 수거하여 신랑·신부 측에 인계합니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <img src="https://i.ibb.co/d0LfkhgY/Gemini-Generated-Image-bkm6w4bkm6w4bkm6.png" style="width:100%; height:460px; object-fit:cover;">
+    </div>
+  </div>
+</section>
+
+<!-- ─── 신뢰 ─── -->
+<section id="trust">
+  <div class="reveal-left" style="position:relative;">
+    <img src='https://i.ibb.co/6RGNKPYc/Gemini-Generated-Image-wg9vfdwg9vfdwg9v.png' alt='문서화 장면' style='width:100%;height:460px;object-fit:cover;'>
+  </div>
+  <div class="reveal-right">
+    <div class="section-tag">신뢰 시스템</div>
+    <h2 class="section-title">축의금은 신뢰가 전부이기 때문에<br>모든 과정을 기록합니다</h2>
+    <div class="trust-features">
+      <div class="trust-feat">
+        <div class="feat-icon">📱</div>
+        <div>
+          <h4>실시간 축의금 기록</h4>
+          <p>하객이 봉투를 전달하는 순간부터 즉시 기록합니다. 누락 없는 실시간 관리 시스템을 운영합니다.</p>
+        </div>
+      </div>
+      <div class="trust-feat">
+        <div class="feat-icon">🎥</div>
+        <div>
+          <h4>영상 기록 기반 수거 및 인계</h4>
+          <p>수거 및 인계 과정 전체를 영상으로 기록합니다. 투명하고 신뢰할 수 있는 인계 과정을 보장합니다.</p>
+        </div>
+      </div>
+      <div class="trust-feat">
+        <div class="feat-icon">📊</div>
+        <div>
+          <h4>엑셀 정산 리포트 제공</h4>
+          <p>예식 당일 또는 다음날, 하객명·금액·총합이 정리된 엑셀 파일을 전달해 드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 영상 기록 ─── -->
+<section id="video" style="padding:100px 80px;">
+  <div class="section-header-center reveal">
+    <div class="section-tag">영상 기록 시스템</div>
+    <h2 class="section-title">수거 및 인계 과정을<br>영상으로 기록합니다</h2>
+  </div>
+  <div class="video-layout">
+    <div class="video-content reveal-left">
+      <p>축의금 수거 및 인계 과정에서 발생할 수 있는 모든 불필요한 오해를 사전에 방지합니다.</p>
+      <p>마중은 봉투 수거부터 신랑·신부 측 인계까지 전 과정을 영상으로 기록하여 보관합니다. 영상은 요청 시 언제든지 확인하실 수 있습니다.</p>
+      <div class="video-highlight">
+        <strong>📹 영상 기록 제공 범위</strong>
+        봉투 수거 시작 → 봉투 확인 → 인계 완료까지 전 과정이 영상으로 기록되어 신뢰를 보장합니다.
+      </div>
+    </div>
+    <div class="reveal-right">
+      <img src='https://i.ibb.co/H3F905q/Gemini-Generated-Image-w8c5n0w8c5n0w8c5.png' alt='인계 장면' style='width:100%;height:400px;object-fit:cover;'>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 엑셀 리포트 ─── -->
+<section id="report" style="padding:100px 80px;">
+  <div class="section-header-center reveal">
+    <div class="section-tag">정산 리포트</div>
+    <h2 class="section-title">결혼식이 끝나면<br>정산도 끝납니다</h2>
+  </div>
+  <div class="report-layout">
+    <div class="report-img reveal-left">
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>No.</th><th>하객명</th><th>관계</th><th>금액</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>김민준</td><td>신랑 친구</td><td>100,000</td></tr>
+          <tr><td>2</td><td>이서연</td><td>신부 직장</td><td>50,000</td></tr>
+          <tr><td>3</td><td>박지호</td><td>신랑 선배</td><td>100,000</td></tr>
+          <tr><td>4</td><td>최유진</td><td>신부 친구</td><td>50,000</td></tr>
+          <tr><td>5</td><td>정현우</td><td>신랑 친척</td><td>200,000</td></tr>
+          <tr><td>6</td><td>한소희</td><td>신부 선배</td><td>50,000</td></tr>
+          <tr class="report-total"><td colspan="3">합계</td><td>550,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="report-content reveal-right">
+      <p>예식이 끝난 후 하객명, 금액, 총합이 정리된 엑셀 정산 리포트를 제공합니다.</p>
+      <p>복잡한 정산 작업 없이, 결혼식 다음 날 바로 깔끔하게 정리된 파일을 받아보실 수 있습니다.</p>
+      <div class="report-items">
+        <div class="report-item">하객 성함 및 관계 기재</div>
+        <div class="report-item">개별 축의금 금액 기록</div>
+        <div class="report-item">전체 합계 자동 계산</div>
+        <div class="report-item">예식 당일 또는 익일 전달</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 가격 ─── -->
+<section id="pricing" style="padding:100px 80px;">
+  <div class="section-header-center reveal">
+    <div class="section-tag">Pricing</div>
+    <h2 class="section-title">하객 수 기준 패키지</h2>
+  </div>
+  <p class="pricing-note reveal">
+    예식 3시간 기준 · 수도권 (서울 / 경기) 기준 가격입니다.<br>
+    지방의 경우 추가 비용이 발생할 수 있으며 별도 문의 부탁드립니다.
+  </p>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <div class="plan-tier">BASIC</div>
+      <div class="plan-price">30만원 <small>~</small></div>
+      <div class="plan-desc">50–100명 / 스태프 2명</div>
+      <ul class="plan-features">
+        <li>전문 스태프 2명 배치</li>
+        <li>하객 맞이 및 안내</li>
+        <li>실시간 축의금 기록</li>
+        <li>봉투 정리 및 보관</li>
+        <li>수거 및 인계</li>
+      </ul>
+      <button class="plan-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">문의하기</button>
+    </div>
+    <div class="pricing-card recommended reveal">
+      <div class="rec-badge">추천</div>
+      <div class="plan-tier">STANDARD</div>
+      <div class="plan-price">39만원 <small>~</small></div>
+      <div class="plan-desc">100–200명 / 스태프 2명</div>
+      <ul class="plan-features">
+        <li>전문 스태프 2명 배치</li>
+        <li>하객 맞이 및 안내</li>
+        <li>실시간 축의금 기록</li>
+        <li>봉투 정리 및 보관</li>
+        <li>수거 및 인계</li>
+        <li>영상 기록 제공</li>
+        <li>엑셀 정산 리포트</li>
+      </ul>
+      <button class="plan-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">문의하기</button>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="plan-tier">PLUS</div>
+      <div class="plan-price">49만원 <small>~</small></div>
+      <div class="plan-desc">200–300명 / 스태프 3명</div>
+      <ul class="plan-features">
+        <li>전문 스태프 3명 배치</li>
+        <li>하객 맞이 및 안내</li>
+        <li>실시간 축의금 기록</li>
+        <li>봉투 정리 및 보관</li>
+        <li>수거 및 인계</li>
+        <li>영상 기록 제공</li>
+        <li>엑셀 정산 리포트</li>
+      </ul>
+      <button class="plan-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">문의하기</button>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="plan-tier">PREMIUM</div>
+      <div class="plan-price">65만원 <small>~</small></div>
+      <div class="plan-desc">300–500명 / 스태프 4명</div>
+      <ul class="plan-features">
+        <li>전문 스태프 4명 배치</li>
+        <li>하객 맞이 및 안내</li>
+        <li>실시간 축의금 기록</li>
+        <li>봉투 정리 및 보관</li>
+        <li>수거 및 인계</li>
+        <li>영상 기록 제공</li>
+        <li>엑셀 정산 리포트</li>
+        <li>전담 매니저 배정</li>
+      </ul>
+      <button class="plan-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">문의하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 추천 대상 ─── -->
+<section id="recommend" style="padding:100px 80px;">
+  <div class="section-header-center reveal">
+    <div class="section-tag">추천 대상</div>
+    <h2 class="section-title">이런 분들께 추천합니다</h2>
+  </div>
+  <div class="recommend-grid">
+    <div class="recommend-card reveal">
+      <div class="rec-icon">🙏</div>
+      <h3>부탁이 부담스러운 분</h3>
+      <p>친구나 지인에게 축의대를 부탁하기 어려운 분께 전문적인 서비스를 제공합니다.</p>
+    </div>
+    <div class="recommend-card reveal">
+      <div class="rec-icon">✨</div>
+      <h3>깔끔한 운영을 원하는 분</h3>
+      <p>결혼식을 체계적이고 깔끔하게 운영하고 싶은 예비 신랑·신부에게 최적입니다.</p>
+    </div>
+    <div class="recommend-card reveal">
+      <div class="rec-icon">📋</div>
+      <h3>정산을 체계적으로 하고 싶은 분</h3>
+      <p>축의금 정산을 정확하고 투명하게 처리하고 싶은 분께 엑셀 리포트를 제공합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 예식장 ─── -->
+<section id="halls" style="padding:80px 0;">
+  <div class="halls-title inner reveal">
+    <h2 class="section-title">다양한 예식장에서<br>마중이 함께합니다</h2>
+  </div>
+  <div class="logo-track-wrap">
+    <div class="logo-track">
+      <span class="logo-item">Grand Wedding Hall</span>
+      <span class="logo-item">Lumiere Convention</span>
+      <span class="logo-item">Aurora Hall</span>
+      <span class="logo-item">Bella Wedding</span>
+      <span class="logo-item">River Convention</span>
+      <span class="logo-item">Pearl Garden</span>
+      <span class="logo-item">The Signature</span>
+      <span class="logo-item">Élégance Hall</span>
+      <span class="logo-item">Grand Wedding Hall</span>
+      <span class="logo-item">Lumiere Convention</span>
+      <span class="logo-item">Aurora Hall</span>
+      <span class="logo-item">Bella Wedding</span>
+      <span class="logo-item">River Convention</span>
+      <span class="logo-item">Pearl Garden</span>
+      <span class="logo-item">The Signature</span>
+      <span class="logo-item">Élégance Hall</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq" style="padding:100px 80px;">
+  <div class="section-header-center reveal">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">자주 묻는 질문</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-btn">
+        <span>몇 시간 기준인가요?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-body"><p>기본 패키지는 예식 3시간 기준입니다. 예식 시작 30분 전 도착하여 세팅을 완료하고, 예식 종료 후 인계까지 함께합니다. 시간 연장이 필요한 경우 사전에 말씀해 주시면 별도 협의가 가능합니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn">
+        <span>영상 기록은 어떻게 전달되나요?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-body"><p>수거 및 인계 과정을 촬영한 영상은 예식 당일 또는 익일 카카오톡 또는 이메일을 통해 전달해 드립니다. 원하시는 경우 클라우드 링크로도 공유해 드립니다.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn">
+        <span>엑셀 리포트는 언제 받을 수 있나요?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-body"><p>엑셀 정산 리포트는 예식 당일 저녁 또는 익일 오전 중 전달해 드립니다. 하객명, 관계, 금액, 총합이 포함된 파일로 제공됩니다. 추가 항목이 필요하신 경우 사전에 말씀해 주세요.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn">
+        <span>지방도 가능한가요?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-body"><p>네, 가능합니다. 수도권 이외 지역의 경우 교통비 등 추가 비용이 발생할 수 있습니다. 정확한 금액은 지역과 일정을 알려주시면 별도 견적으로 안내해 드립니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 문의 ─── -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="contact-info reveal-left">
+      <h2>결혼식 날짜만<br>남겨주세요</h2>
+      <div class="gold-line"></div>
+      <p>빠르게 확인 후 연락드립니다.<br>부담 없이 문의해 주세요.</p>
+      <div class="contact-channels">
+        <a href="#" class="channel-btn kakao">
+          <span class="ch-icon">💬</span>
+          <span class="ch-text">카톡 상담하기</span>
+        </a>
+        <a href="#contact" class="channel-btn inquiry">
+          <span class="ch-icon">📝</span>
+          <span class="ch-text">견적 요청하기</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form reveal-right">
+      <div class="form-title">견적 문의</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>결혼식 날짜</label>
+          <input type="date" />
+        </div>
+        <div class="form-group">
+          <label>지역</label>
+          <input type="text" placeholder="예: 서울 강남구" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>예상 하객수</label>
+          <select>
+            <option value="">선택해주세요</option>
+            <option>50~100명 (BASIC)</option>
+            <option>100~200명 (STANDARD)</option>
+            <option>200~300명 (PLUS)</option>
+            <option>300~500명 (PREMIUM)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>연락처</label>
+          <input type="tel" placeholder="010-0000-0000" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>요청사항</label>
+        <textarea placeholder="궁금하신 사항이나 특별 요청 사항을 자유롭게 입력해 주세요."></textarea>
+      </div>
+      <button class="form-submit">견적 요청하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">마중 <span>MAJOONG</span></div>
+      <p>결혼식의 첫 인상을 책임지는<br>전문 축의대 서비스</p>
+      <div class="footer-meta">
+        대표자: 홍길동&nbsp;&nbsp;|&nbsp;&nbsp;사업자등록번호: 000-00-00000<br>
+        주소: 서울특별시 강남구 테헤란로 000<br>
+        이메일: hello@majoong.kr&nbsp;&nbsp;|&nbsp;&nbsp;고객센터: 02-000-0000
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="#intro">마중 소개</a></li>
+        <li><a href="#service">축의대 대행</a></li>
+        <li><a href="#trust">신뢰 시스템</a></li>
+        <li><a href="#report">정산 리포트</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Pricing</h4>
+      <ul>
+        <li><a href="#pricing">BASIC</a></li>
+        <li><a href="#pricing">STANDARD</a></li>
+        <li><a href="#pricing">PLUS</a></li>
+        <li><a href="#pricing">PREMIUM</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+        <li><a href="#contact">견적 문의</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">이용약관</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MAJOONG All rights reserved.</span>
+    <span>Designed with care for your special day.</span>
+  </div>
+</footer>
+
+<script>
+  // Nav shadow on scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+  // Form submit
+  document.querySelector('.form-submit').addEventListener('click', () => {
+    alert('견적 요청이 접수되었습니다. 빠른 시일 내 연락드리겠습니다 🙏');
+  });
+</script>
+</body>
+</html>
