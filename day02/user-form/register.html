@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Registration Form</title>
+    </head>
+    <body>
+        <h1>User Registration</h1>
+        <form action="#" method="POST">
+            <div>
+            사용자의 이름: <input type="text">
+        <br>
+            사용자의 이메일 주소: <input type="email">
+        <br>
+            비밀번호: <input type="password">
+            <br>
+            생년월일: <input type="date">
+        <br>
+            나이: <input type="number",최소값 18, 최대값 100>
+        <br>
+            서비스 만족도: <input type="range", 범위 1~10>
+        <br>
+            성별: <input type="radio" name="gender" value="male"> 남성
+            <input type="radio" name="gender" value="female"> 여성
+            <input type="radio" name="gender" value="other"> 기타
+        <br>
+            취미: <input type="checkbox" name="hobby" value="홀덤"> 홀덤
+            <input type="checkbox" name="hobby" value="피아노"> 피아노
+            <input type="checkbox" name="hobby" value="바베큐"> 바베큐
+        <br>
+            국가: <select name="국가">
+                <option value="South korea">South korea</option>
+                <option value="USA">USA</option>
+                <option value="Japan">Japan</option>
+                <option value="China">China</option>
+                <option value="UK">UK</option>
+                </select>
+            </div>
+        <br>
+            <button type:="submit">제출</button>
+            <button type:="reset">초기화</button>
+    </body>
