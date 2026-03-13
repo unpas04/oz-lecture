@@ -17,6 +17,7 @@ const genPromptInput = () => {
 
 
 
+
 // 정의
 
 const maxStars = 10;
