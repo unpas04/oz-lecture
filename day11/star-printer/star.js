@@ -15,17 +15,10 @@ const genPromptInput = () => {
     return input;
 }
 
-
-
-
-// 정의
-
-const maxStars = 10;
-let input;
-var stars = "";
-
+//출력
 function printStars(count = 1) {
-    stars = "";
+
+    let stars = "";
 
     for (let i = 0; i < count; i++) {
         stars += "*";
@@ -34,18 +27,39 @@ function printStars(count = 1) {
     console.log(stars);
 }
 
-
 // 실행
+let input = genPromptInput();
+printStars(input);
 
-while (true) {
 
-    input = Number(prompt("Enter the number of stars (1-10):"));
+// // 정의
 
-    if (isNaN(input) || input < 1 || input > maxStars) {
-        console.log("Invalid input! Enter a number between 1 and 10.");
-        continue;
-    }
+// const maxStars = 10;
+// let input;
+// var stars = "";
 
-    printStars(input);
-    break;
-}
+// function printStars(count = 1) {
+//     stars = "";
+
+//     for (let i = 0; i < count; i++) {
+//         stars += "*";
+//     }
+
+//     console.log(stars);
+// }
+
+
+// // 실행
+
+// while (true) {
+
+//     input = Number(prompt("Enter the number of stars (1-10):"));
+
+//     if (isNaN(input) || input < 1 || input > maxStars) {
+//         console.log("Invalid input! Enter a number between 1 and 10.");
+//         continue;
+//     }
+
+//     printStars(input);
+//     break;
+// }
