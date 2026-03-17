@@ -20,7 +20,7 @@ function addTask() {
 
     // 새로운 리스트 아이템 생성
     const li = document.createElement('li');
-    li.classList.add('task-item'); // CSS 스타일을 위해 클래스 추가
+    li.classList.add('task-item'); // CSS 스타일
 
     // 할 일 텍스트 추가
     const span = document.createElement('span');
@@ -38,7 +38,7 @@ function addTask() {
 
     // 완료 상태 토글 이벤트 리스너
     span.addEventListener('click', function () {
-        span.classList.toggle('completed'); // 'completed' 클래스를 넣었다 뺐다 함
+        span.classList.toggle('completed');
     });
 
     // 요소 조립
@@ -52,7 +52,6 @@ function addTask() {
 
 // 모든 할 일 삭제 함수
 function clearAllTasks() {
-    // 목록 안에 첫 번째 항목이 있는 동안 계속해서 삭제합니다.
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
