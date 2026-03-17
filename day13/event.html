@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>Event</title>
+</head>
+
+<body>
+    <input id="text-input" type="text" onfocus="FocusEvent()" onblur="blurEvent()" />
+    <button onclick="clickEvent()">클릭</button>"
+
+    <!-- 프로터티 이벤트-->
+    <button id="property-button">프로퍼티 이벤트</button>
+
+    <div id="container"></div>
+    <script>
+        function clickEvent() {
+            const Input = document.getElementById("text-input");
+            const container = document.getElementById("container");
+            const text = Input.value;
+            const p = document.createElement("p");
+            p.textContent = text;
+            container.appendChild(p);
+        }
+
+        function FocusEvent() {
+            console.log("focus");
+        }
+        function blurEvent() {
+            console.log("blur");
+        }
+
+        // 프로퍼티 이벤트
+        const propertyButton = document.getElementById("property-button");
+        propertyButton.onclick = function () {
+            alert("클릭");
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Keyboard Event</title>
+</head>
+
+<body>
+    <input id="text-input" type="text" placeholder="키보드 이벤트 테스트" />
+    <script>
+        const input = document.getElementById("text-input");
+        input.addEventListener("keydown", (event) => {
+            console.log(event);
+            console.log("keydown 이벤트발생" + event.key);
+        })
+
+    </script>
+</body>
+
+</html>
