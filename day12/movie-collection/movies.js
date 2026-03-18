@@ -39,6 +39,8 @@ movies.push({
 
 console.log(movies);
 
+
+
 const printMovies = (movies) => {
     for (let i = 0; i < movies.length; i++) {
         const movie = movies[i];
